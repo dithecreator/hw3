@@ -45,5 +45,5 @@ void input(){
 }
 
 int main() {
-
+    Book user;
 }
