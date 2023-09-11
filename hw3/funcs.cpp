@@ -60,7 +60,7 @@ void Book:: print(Book* users, int size){
     }
 void Book:: addUser(Book* users, int size){
         for(int i = 0; i < size; i++){
-            users -> input();
+            users[i].input();
         }
     }
     
@@ -120,7 +120,7 @@ void Book:: read(FILE* file, Book* users, int size){
 
     
 
-void Book:: deleteUser(Book* users, int size){
+Book* Book:: deleteUser(Book* users, int size){
          char buffer[100];
          cout << "введите фамилию, которую хотите удалить: ";
          cin >> buffer;
@@ -136,8 +136,19 @@ void Book:: deleteUser(Book* users, int size){
          int k = 0;
          for(int i = 0; i < size; i++){
              if(index != i){
-                 newUsers[k] = users[i];
-                 k++;
+//                 newUsers[k] = users[i];
+                 newUsers[k].name = new char[strlen(users[i].name) + 1];
+                 strcpy(newUsers[k].name, users[i].name);
+                 
+                 newUsers[k].vorname = new char[strlen(users[i].vorname) + 1];
+                 strcpy(newUsers[k].vorname, users[i].vorname);
+                 
+                 newUsers[k].homeNum = new char[strlen(users[i].homeNum) + 1];
+                 strcpy(newUsers[k].homeNum, users[i].homeNum);
+                 
+                 newUsers[k].mobileNum = new char[strlen(users[i].mobileNum) + 1];
+                 strcpy(newUsers[k].mobileNum, users[i].mobileNum);
+                k++;
              }
          }
 
@@ -148,16 +159,16 @@ void Book:: deleteUser(Book* users, int size){
          cout << newUsers[i].mobileNum << endl;
          }
          delete[] users;
-         users = newUsers;
+    return newUsers;
 
      }
 
  
 Book::~Book(){//деструктор
-        delete[] name;
-        delete[] vorname;
-        delete[] homeNum;
-        delete[] mobileNum;
+//        delete[] name;
+//        delete[] vorname;
+//        delete[] homeNum;
+//        delete[] mobileNum;
     }
     
 

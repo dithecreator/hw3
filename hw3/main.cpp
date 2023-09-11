@@ -31,14 +31,15 @@ int main() {
     cout << "3 - сохранить данные в файл" << endl;
     cout << "4 - считать данные из файла" << endl;
     cin >> answer1;
-    
+    Book* result = nullptr;
     switch(answer1){
         case 1:
             users -> search(users, size);
             break;
             
         case 2:
-                users -> deleteUser(users, size);
+            
+             result = users -> deleteUser(users, size);
             break;
             
         case 3:
@@ -50,6 +51,6 @@ int main() {
             break;
     }
 
-    delete[] users;
+    delete[] result;
 
 }

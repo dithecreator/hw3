@@ -32,7 +32,7 @@ public:
     void  search(Book* users, int size);
     void save(FILE* file, Book* users, int size);
     void  read(FILE* file, Book* users, int size);
-    void deleteUser(Book* users, int size);
+    Book* deleteUser(Book* users, int size);
     ~Book();
                                 
 };
